@@ -3,6 +3,16 @@
 Make PHP shorter and easier.
 ---
 
+## Concept
+
+- Chain-based syntax (db.users.where(...))
+- Simple variable access (@item.name)
+
+##This explains the type of incident.
+
+@items = db.users.where("age > 20")
+
+
 ## Example
 
 ```pq
