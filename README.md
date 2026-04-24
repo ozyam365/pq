@@ -12,6 +12,13 @@ Make PHP shorter and easier.
 
 @items = db.users.where("age > 20")
 
+## Run
+
+php run.php
+
+## Output
+
+hello pq
 
 ## Example
 
