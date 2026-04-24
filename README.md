@@ -1,7 +1,7 @@
 # pq
 
 Make PHP shorter and easier.
-pq ver 0.01  = phpquick 
+pq(phpquick) ver 0.01  
 ---
 
 ## Concept
