@@ -13,6 +13,11 @@ pq(phpquick) ver 0.01
 
 @items = db.users.where("age > 20")
 
+## Syntax
+@ -> variable
+[] -> array
+. -> chain
+
 ## Run
 
 php run.php
