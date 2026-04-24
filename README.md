@@ -1,9 +1,12 @@
 # pq
 
 Make PHP shorter and easier.
-pq(phpquick) ver 0.01  
 
-I am making it with ChatGPT.
+pq (phpquick) is a tiny DSL that converts simple scripts into PHP.
+
+Version 0.01
+
+Created together with ChatGPT.
 
 ---
 
