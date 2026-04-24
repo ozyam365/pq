@@ -15,17 +15,19 @@ Simple variable access (@item.name)
 
 @items = db.users.where("age > 20")
 
-Syntax
+## Syntax
 @ → variable
+
 [] → array
+
 . → chain
 
-Run
+
+## Run
 php run.php
 
-Output
+## Output
 hello pq
-
 
 
 ## More Example
