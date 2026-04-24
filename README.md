@@ -1,42 +1,30 @@
-# pq
+## pq
 
 Make PHP shorter and easier.
 
 pq (phpquick) is a tiny DSL that converts simple scripts into PHP.
 
-Version 0.01
-
+Version 0.01  
 Created together with ChatGPT.
 
 ---
 
 ## Concept
-
-- Chain-based syntax (db.users.where(...))
-- Simple variable access (@item.name)
-
-##This explains the type of incident.
+Chain-based syntax (db.users.where(...))
+Simple variable access (@item.name)
 
 @items = db.users.where("age > 20")
 
-## Syntax
-@ -> variable
-[] -> array
-. -> chain
+Syntax
+@ → variable
+[] → array
+. → chain
 
-## Run
-
+Run
 php run.php
 
-## Output
-
+Output
 hello pq
-
-## Example
-
-```pq
-@name = "pq"
-msg.print("hello " + @name)
 
 
 
