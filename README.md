@@ -1,7 +1,6 @@
 # pq
 
-Write less PHP. Build more.
-
+Make PHP shorter and easier.
 ---
 
 ## Example
