@@ -1,6 +1,9 @@
 # pq
 
-Making PHP code short and easy to develop
+Write less PHP. Do more.
+
+A tiny DSL that turns simple scripts into PHP.
+
 ---
 
 ## Example
