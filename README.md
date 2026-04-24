@@ -2,6 +2,9 @@
 
 Make PHP shorter and easier.
 pq(phpquick) ver 0.01  
+
+I am making it with ChatGPT.
+
 ---
 
 ## Concept
