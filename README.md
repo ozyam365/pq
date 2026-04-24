@@ -13,7 +13,7 @@ A tiny DSL that turns simple scripts into PHP.
 msg.print("hello " + @name)
 
 
-```md
+
 ## More Example
 
 ```pq
