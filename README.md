@@ -1,42 +1,35 @@
-## pq
+# pq
 
-Make PHP shorter and easier.
+Write less PHP. Do more.
 
-pq (phpquick) is a tiny DSL that converts simple scripts into PHP.
-
-Version 0.01  
-
-ozones produced this together with ChatGPT and Gemini.
+A tiny DSL that turns simple scripts into PHP.
 
 ---
 
-## Concept
-Chain-based syntax (db.users.where(...))
-Simple variable access (@item.name)
-
-@items = db.users.where("age > 20")
-
-## Syntax
-@ → variable
-
-[] → array
-
-. → chain
-
-
-## Run
-php run.php
-
-## Output
-hello pq
-
-
-## More Example
+## Example
 
 ```pq
-@r["subject"] = @subject
-@r["note"] = @note
-@r["author"] = @author
-@r["reg_date"] = now()
+@name = "pq"
 
-db.bbs.insert(@r)
+msg.print("hello " + @name)
+
+
+```md
+## More Example
+
+trace.on()
+
+@users = [
+  {name:"hong", age:25},
+  {name:"kim", age:18},
+  {name:"lee", age:32}
+]
+//@aaa -> variable    (@aaa) -> object
+@result = (@users)
+  .where(age > 20 && name != "kim")
+  .map(name + " (" + age + ")")
+  .get()
+
+for $n in @result
+  msg.print($n)
+end
