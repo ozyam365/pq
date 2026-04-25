@@ -19,17 +19,16 @@ msg.print("hello " + @name)
 
 trace.on()
 
-@users = [
-  {name:"hong", age:25},
-  {name:"kim", age:18},
-  {name:"lee", age:32}
-]
-//@aaa -> variable    (@aaa) -> object
-@result = (@users)
-  .where(age > 20 && name != "kim")
-  .map(name + " (" + age + ")")
-  .get()
+@name = "pq"
 
-for $n in @result
-  msg.print($n)
-end
+msg.print("hello " + @name)
+
+
+```md
+## More Example
+
+trace.on()
+
+@data = http.get("https://api.coinbase.com/v2/prices/spot?currency=USD").json()
+
+msg.print("BTC: " + @data["data"]["amount"])
