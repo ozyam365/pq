@@ -5,7 +5,7 @@ Make PHP shorter and easier.
 pq (phpquick) is a tiny DSL that converts simple scripts into PHP.
 
 Version 0.01  
-Created together with ChatGPT.
+Created together with ChatGPT & Gemini.
 
 ---
 
