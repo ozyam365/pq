@@ -1,6 +1,6 @@
 🚀 핵심 구조
 # ⚡ PQ - PHP DSL Query Engine ver 0.5
-수정중 에효
+수정중 에효 Updating
 Write DB queries like this:
 
 ```pq
