@@ -78,5 +78,17 @@ API auto generator
 Admin panel
 CRUD auto mapping
 📄 License
-
 MIT
+
+---
+
+# 🤝 Credits
+
+This project was built with collaboration and inspiration from:
+
+- OZones
+- ChatGPT
+- 재미나이 (JaeminAI)
+
+---
+
