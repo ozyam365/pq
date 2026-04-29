@@ -50,3 +50,16 @@ ozyam365
 💡 팁
 파일 업로드 후 @와 .의 마법을 직접 경험해 보세요.
 문의사항이나 아이디어는 Issue 탭에 남겨주세요!
+
+
+## 🤖 제작 파트너 (The Collaborators)
+
+이 엔진은 인간의 창의력과 AI의 기술력이 결합된 'AI 하이브리드 프로젝트'입니다.
+
+- Human Architect: [ozyam365](https://github.com) (철학 및 설계)
+- AI Partners:
+  - Gemini: "로직의 헌법을 세우고 StrFlow의 정교함을 다듬다."
+  - ChatGPT: "마침표 전쟁을 승리로 이끌고 엔진의 코어를 빌드하다."
+
+> "두 AI 파트너와 밤새 토론하며 PHP의 한계를 뛰어넘는 문법을 설계했습니다."
+
