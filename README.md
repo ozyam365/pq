@@ -41,6 +41,12 @@ sample/test.pq 파일을 생성하고 PQ 문법으로 코딩합니다.
 
 브라우저에서 run.php/sample/test.pq로 접속하여 결과를 확인합니다.
 
+*** Usage Rules ***
+@ -> variable
+(@) -> user object
+[] -> array
+. -> Chaining
+
 
 ### 1. 오브젝트 아이덴티티 (Object Identity)
 PQ는 데이터의 정체성을 시각적으로 분리합니다. 시스템이 제공하는 '길'과 사용자가 다루는 '데이터'는 눈으로 구분되어야 합니다.
