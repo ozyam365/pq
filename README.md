@@ -1,3 +1,5 @@
+pq ver0.6
+
  PQ: The Ultimate PHP Query Engine ver 0.6
  
 "PHP의 복잡함을 걷어내고, 직관의 골뱅이(@)와 마침표(.)만 남기다."
