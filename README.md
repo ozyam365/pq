@@ -7,10 +7,15 @@ PQ 엔진은 PHP의 지저분한 문법(->, $, array_map 등)을 현대적이고
 
 📜 PQ 헌법 (The Constitution)
 제1조 (The Identity): 모든 변수는 @로 시작하며, 객체(Object)는 반드시 (@user).name과 같이 괄호로 명시하여 그 정체성을 보호한다.
+
 제2조 (StrFlow): 모든 문자열 가공은 마침표(.)로 체이닝하며, 반드시 "기준점(.sort)을 먼저 잡고, 그 다음 가공(.cut)한다."
+
 제3조 (Lazy DB): 쿼리는 출력 직전까지 실행을 미룬다(Lazy). db.user.one()과 같이 개발자의 의도가 보일 때만 트리거된다.
+
 제4조 (Safe Import): import "파일명.pq";를 통해 시스템 설정과 모듈을 물리적으로 완벽히 격리한다.
+
 제5조 (Mindset): "에러 날 코드는 아예 안 쓴다. 한눈에 흐름이 안 보이면 버리고 다시 짠다."
+
 
 ✨ 주요 기능 (Key Features)
 1. 오브젝트 아이덴티티 (Object Identity)
