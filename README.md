@@ -1,6 +1,7 @@
  PQ: The Ultimate PHP Query Engine ver 0.6
  
 "PHP의 복잡함을 걷어내고, 직관의 골뱅이(@)와 마침표(.)만 남기다."
+
 PQ 엔진은 PHP의 지저분한 문법(->, $, array_map 등)을 현대적이고
 직관적인 스크립트 스타일로 변환하여 실행해주는 초경량 PHP 가공 프레임워크입니다.
 
