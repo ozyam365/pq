@@ -1,50 +1,48 @@
 <?php
 function pq_ready($code) {
     if (empty(trim((string)$code))) return '';
-    global $full_path;
+    $current_path = $GLOBALS['full_path'] ?? $_SERVER['SCRIPT_FILENAME'];
     $strings = [];
 
-    // 1. [보호] 따옴표 내부 격리 ($m[0]으로 정확히 매칭)
+    // 1. [보호] 따옴표 격리
     $code = preg_replace_callback('/(["\'])(?:(?=(\\\\?))\2.)*?\1/s', function($m) use (&$strings) {
-        $key = '___PQSTR' . count($strings) . '___';
+        $key = '##STR' . count($strings) . '##';
         $strings[$key] = $m[0]; 
         return $key;
     }, $code);
 
-    // 2. [헌법 1조] import - $m[1]을 사용하여 TypeError 방지 및 경로 보호
-    $code = preg_replace_callback('/import\s+(___PQSTR\d+___)\s*;/', function($m) use ($full_path, $strings) {
-        $key = $m[1]; // 배열에서 키값 문자열만 추출
-        $target = isset($strings[$key]) ? trim($strings[$key], '"\'') : '';
-        
-        // 마침표 오염 방지를 위해 아예 이 단계에서 마침표를 [[DOT]]으로 숨김
-        $final = dirname($full_path) . '/' . $target;
-        $final_safe = str_replace('.', '[[DOT]]', $final);
-        
-        return "eval(pq_ready(file_get_contents('$final_safe')));";
+    // 2. [함수] .money() 전역 함수 선제 래핑 (마침표 변환 전 실행)
+    $code = preg_replace('/([\$@\w\->\(\)\[\]\.]+)\.money\(\)/', '[[FN_MONEY]]($1)', $code);
+
+    // 3. [헌법] import 처리 (세미콜론 흡수 및 경로 보호)
+    $code = preg_replace_callback('/import\s+(##STR\d+##)\s*;/', function($m) use ($current_path, $strings) {
+        $target = isset($strings[$m[1]]) ? trim($strings[$m[1]], '"\'') : '';
+        $base_dir = is_dir($current_path) ? $current_path : dirname($current_path);
+        $final = realpath($base_dir . '/' . $target);
+        if (!$final || is_dir($final)) return "";
+        $safe_final = str_replace('.', '[[SAFE_DOT]]', $final);
+        return "eval(pq_ready(file_get_contents(str_replace('[[SAFE_DOT]]', '.', '$safe_final'))));";
     }, $code);
 
-    // 3. [아이덴티티] 객체 대입 및 접근 (@user) = / (@user).aa
+    // 4. [래핑] 배열 래핑 토큰화 (괄호 짝 강제 고정)
+    $code = preg_replace('/=\s*\[/s', '= pq_data([[OPEN]]', $code);
+    $code = preg_replace('/\]\s*;/s', '[[CLOSE]]);', $code);
+
+    // 5. [기호] 디버그 및 아이덴티티 치환 (@ -> $)
+    $code = preg_replace('/debug\.on\(\)/', 'pq_debug("on")', $code);
     $code = preg_replace('/\((@\w+)\)\s*=/', '$1 =', $code);
-    $code = preg_replace('/\((@\w+)\)\.([a-zA-Z_]\w*)/', '$1->$2', $code);
-
-    // 4. [헌법 2조] StrFlow 가공 함수 래핑
-    $code = preg_replace('/([\$@\w\->\(\)\.]+)\.money\(\)/', 'pq_money($1)', $code);
-    $code = preg_replace('/([\$@\w\->\(\)\.]+)\.date\((.*?)\)/', 'pq_date($1, $2)', $code);
-    $code = preg_replace('/([\$@\w\->\(\)\.]+)\.hancut\((\d+)\)/', 'pq_hancut($1, $2)', $code);
-
-    // 5. [변환] 기본 문법 치환
     $code = preg_replace('/@([a-zA-Z_]\w*)/', '\$$1', $code);
-    $code = preg_replace('/\bfn\s*\((.*?)\)\s*\{/', 'function($1) {', $code);
+
+    // 6. [전쟁] 남은 마침표만 화살표(->)로 변환
+    $code = preg_replace('/\.([a-zA-Z_]\w*)/', '->$1', $code);
+
+    // 7. [복구] 토큰 환원 및 특수 구문 원복
+    $code = str_replace('[[FN_MONEY]]', 'pq_money', $code);
+    $code = str_replace(['[[OPEN]]', '[[CLOSE]]'], ['[', ']'], $code);
+    $code = str_replace('db->', 'db()->', $code);
+    $code = preg_replace('/filter\((.*?)\)->on\((.*?)\)->replace\(\)/', 'filter_pq($1)->on($2)->replace()', $code);
     $code = preg_replace('/\bprint\s*\(/', 'pq_print(', $code);
-    $code = preg_replace('/\bdb\./', 'db()->', $code);
 
-    // 6. [마무리] 나머지 일반 마침표 치환 (임시 키값 오염 방지)
-    for($i=0; $i<3; $i++) {
-        $code = preg_replace('/(?<!___PQSTR\d)(?<!___PQSTR\d\d)\.([a-zA-Z_]\w*)/', '->$1', $code);
-    }
-
-    // 7. [복원] 숨겼던 마침표와 문자열 최종 복구
-    $code = str_replace('[[DOT]]', '.', $code);
     if (!empty($strings)) {
         foreach ($strings as $k => $v) $code = str_replace($k, $v, $code);
     }
