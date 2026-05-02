@@ -29,7 +29,7 @@
 
 ## 💻 맛보기 (Syntax Sample)
 
-//// php
+```sample/bit.pq
 @base = "https://api.coinbase" . ".com";
 @path = "/v2/prices/BTC-USD/spot";
 @target = @base . @path;
@@ -43,13 +43,14 @@ if(@res.data) {
     print("현재 비트코인 시세: $" . @res.data.amount);
 }
 
-//// sample/insert.pq
+
+
+``` sample/insert.pq
 db.connect();
 
 @record = []; 
 @record["name"] = "홍길동2";
 @record["age"] = 32;
-
 
 //// 결과는 그냥 @ 변수에 담으면 됩니다. (외울 필요 없음)
 @res = db.users.insert(@record);
@@ -58,7 +59,9 @@ db.connect();
 
 if (@res) print("성공");
 
-//// sample/list.pq
+
+
+```  sample/list.pq
 db.connect();
 
 // 방금 넣은 녀석들 역순으로 10개만 리스트로 가져오기
