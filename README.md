@@ -1,9 +1,6 @@
 # 🚀 PQ Engine (v0.7 Beta)
 > **"PHP의 복잡함을 걷어내고, 직관의 항해를 시작하다."**
 
-[![Version](https://shields.io)](https://github.com)
-[![PHP](https://shields.io)](https://php.net)
-[![License](https://shields.io)](https://github.com)
 
 **PQ(PHP+QUERY / PHP+QUICK)** 엔진은 PHP의 강력함과 jQuery의 직관성을 결합한 실무 최적화 '구축함'급 엔진입니다. 10인 이하 소규모 팀의 생산성을 극대화합니다.
 
@@ -13,8 +10,7 @@
 코드의 흐름이 곧 법입니다. PQ는 아래 5가지 원칙을 준수합니다.
 
 
-| 조항 | 이름 | 핵심 원칙 |
-| :--- | :--- | :--- |
+
 | **제1조** | **The Identity** | 모든 변수는 `@`, 객체는 `(@ user)`로 정체성을 보호한다. |
 | **제2조** | **StrFlow** | 가공은 마침표(`.`)로 체이닝하며, 기준점(`.sort`)을 먼저 잡는다. |
 | **제3조** | **Lazy DB** | 쿼리는 실행을 미루며, 의도가 명확할 때만 트리거된다. |
@@ -25,7 +21,7 @@
 
 ## ⚡ 주요 특징 (Why PQ?)
 
-*   **실전형 무장:** 대기업용 자바가 아닌, 중소규모 프로젝트를 위한 날렵한 '구축함'.
+*   **실전형 무장:**  중소규모 프로젝트를 위한 날렵한 '구축함'.
 *   **보안 수사관:** `form.safe()` 한 줄로 끝내는 강력한 보안 방어막 (준비중).
 *   **AI 하이브리드:** Gemini & ChatGPT와 밤새 토론하며 설계한 현대적 문법.
 
@@ -33,14 +29,43 @@
 
 ## 💻 맛보기 (Syntax Sample)
 
-```php
-// 변수와 객체의 명확한 구분
-@name = "PQ";
-(@ user).login("admin").check();
+//// php
+@base = "https://api.coinbase" . ".com";
+@path = "/v2/prices/BTC-USD/spot";
+@target = @base . @path;
 
-// 직관적인 문자열 가공 (StrFlow)
-@result = .sort(@text).cut(0, 10).mark("...");
-```
+@res = http.url(@target).send();
+
+print("--- 데이터 확인 ---");
+print(@res); 
+
+if(@res.data) {
+    print("현재 비트코인 시세: $" . @res.data.amount);
+}
+
+//// sample/insert.pq
+db.connect();
+
+@record = []; 
+@record["name"] = "홍길동2";
+@record["age"] = 32;
+
+
+//// 결과는 그냥 @ 변수에 담으면 됩니다. (외울 필요 없음)
+@res = db.users.insert(@record);
+
+// 확인이 필요할 때만 출력
+
+if (@res) print("성공");
+
+//// sample/list.pq
+db.connect();
+
+// 방금 넣은 녀석들 역순으로 10개만 리스트로 가져오기
+@data = db.users.sort("idx desc").limit(1, 10);
+
+print(@data);
+
 
 ---
 
