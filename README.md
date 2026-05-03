@@ -58,6 +58,14 @@ pq tries to make it:
 
 ---
 
+## 🤖 Development
+
+pq is being developed with the help of AI.
+
+Design decisions, structure, and refinements are iterated through human + AI collaboration.
+
+---
+
 ## 🔧 Design Philosophy
 
 * Explicit over implicit
