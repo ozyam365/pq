@@ -12,6 +12,25 @@ foreach(@res as @row):
   print((@row).name);
 endforeach;
 
+
+pq (beta)
+
+A small DSL for writing database logic in a readable way.
+
+@ = raw value  
+(@) = object access
+
+Example:
+
+@res = db.users.where("age > 20").get();
+
+foreach(@res as @row):
+  print((@row).name);
+endforeach;
+
+
+
+
 🚀PQ 엔진소개
 
 ✨PQ engine VERSION 0.7 beta 베타 버젼이라 작업 하는데로 올리고 있어서 
