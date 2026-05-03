@@ -35,7 +35,7 @@ No hidden magic. Everything is explicit.
 ## ✨ Example
 
 ```pq
-@res = db.users.where("age > 20").get();
+@res = db.users.where("age > 20").limit(3);
 
 foreach(@res as @row):
   print((@row).name);
