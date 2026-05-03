@@ -3,6 +3,18 @@
  * PQ 번역관 (v0.8.7 - Anti-Double Dollar)
  * [수사 지침] 변수 세탁 시 달러 기호를 단 하나만 정교하게 결착한다.
  */
+ // 1. 핵심 유틸리티(함수들)를 먼저 불러와야 예약어 함수들을 쓸 수 있습니다.
+include_once __DIR__ . "/../../pq/core/util.php";
+include_once __DIR__ . "/../../pq/core/db.php";
+include_once __DIR__ . "/../../pq/core/file.php";
+// ... 나머지 코어 파일들
+
+// 2. 그 다음 시스템 예약어 변수를 할당합니다.
+$form    = form_pq();    // 이제 util.php를 읽었으므로 에러가 나지 않습니다.
+$db      = db();
+$file    = file_pq();
+$date    = date_pq();
+$time    = time_pq();
 function pq_ready($code) {
     if (empty(trim((string)$code))) return '';
 
@@ -28,7 +40,8 @@ function pq_ready($code) {
     // 3. [기타 유틸리티 결착]
     $code = preg_replace('/trace\(/i', 'Trace::add(', $code);
     $code = str_ireplace(['trace->on', 'debug->on'], 'Trace::on', $code);
-
     return trim($code);
 }
+	$form = form_pq(); 
 ?>
+

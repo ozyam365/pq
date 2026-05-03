@@ -15,7 +15,7 @@
             </div>
             <div class="collapse show" id="menu-01">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">라이센스</a></li>
+                    <li><a href="/license">라이센스</a></li>
                 </ul>
             </div>
         </li>
@@ -25,57 +25,82 @@
             </button>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/db/001">connect() [완료]</a></li>
+                    <li><a href="/db/connect">connect() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">insert() [완료]</a></li>
+                    <li><a href="/db/query">query() ✅</a></li>
+                </ul>
+            </div>
+			<div class="collapse show" id="menu-02">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/db/insert">insert()  ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">where()</a></li>
+                    <li><a href="/db/where">where() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">update()</a></li>
+                    <li><a href="/db/update">update() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">delete()</a></li>
+                    <li><a href="/db/delete">delete() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">sort()</a></li>
+                    <li><a href="/db/sort">sort() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">limit()</a></li>
+                    <li><a href="/db/limit">limit() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">one()</a></li>
+                    <li><a href="/db/one">one() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">cnt()</a></li>
+                    <li><a href="/db/cnt">cnt() ✅ </a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">pluck()</a></li>
+                    <li><a href="/db/pluck">pluck() ✅</a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-02">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">filter()</a></li>
+                    <li><a href="/db/filter">filter() ✅</a></li>
+                </ul>
+            </div>
+            <div class="collapse show" id="menu-02">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/db/yn">yn() ✅[검수필요]</a></li>
+                </ul>
+            </div>
+            <div class="collapse show" id="menu-02">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/db/make">make() ✅[검수필요]</a></li>
+                </ul>
+            </div>
+            <div class="collapse show" id="menu-02">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/db/clear">clear() ✅[검수필요]</a></li>
+                </ul>
+            </div>
+            <div class="collapse show" id="menu-02">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/db/join">join() ✅[검수필요]</a></li>
                 </ul>
             </div>
         </li>
@@ -85,19 +110,19 @@
             </button>
             <div class="collapse show" id="menu-03">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">write() [진행]</a></li>
+                    <li><a href="/intro">upload() [진행중]</a></li>
+                </ul>
+            </div>
+            <div class="collapse show" id="menu-03">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/intro">write() </a></li>
                 </ul>
             </div>
             <div class="collapse show" id="menu-03">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="/intro">read()</a></li>
                 </ul>
-            </div>
-            <div class="collapse show" id="menu-03">
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                    <li><a href="/intro">save()</a></li>
-                </ul>
-            </div>
+            </div>>
         </li>
         <li class="mb-1">
             <button class="btn btn-toggle" data-bs-toggle="collapse" data-bs-target="#menu-04" aria-expanded="true">
@@ -111,6 +136,21 @@
             <div class="collapse show" id="menu-04">
                 <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                     <li><a href="/intro">db.one()</a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="mb-1">
+            <button class="btn btn-toggle" data-bs-toggle="collapse" data-bs-target="#menu-05" aria-expanded="true">
+                SESSION
+            </button>
+            <div class="collapse show" id="menu-05">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/intro">start()</a></li>
+                </ul>
+            </div>
+            <div class="collapse show" id="menu-05">
+                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                    <li><a href="/intro">get()</a></li>
                 </ul>
             </div>
         </li>
