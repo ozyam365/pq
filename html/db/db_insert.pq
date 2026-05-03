@@ -18,14 +18,16 @@
 <pre>
 <pq>
 [[ 
-  db.connect(); 
-  //@res는 아직형태가 안잡힌 대기변수라고 이해하시면 됩니다. triger전의 변수
-  @res = db.query("SELECT * FROM users WHERE status = 'active' LIMIT 5"); 
-]]
+  db.connect();
 
-[[ foreach(@res as (@row)): ]]
-  이름: [[=(@row).name]] 
-[[ endforeach; ]]
+  @r = []; 
+  @r["name"] = "홍길동2";
+  @r["age"] = 32;
+  @res = db.users.insert(@r);
+
+  // 확인이 필요할 때만 출력
+  if (@res) print("성공");
+]]
 </pq>
 </pre>
 					</p>
