@@ -1,4 +1,6 @@
-# pq (beta)
+# pq (beta) version 0.7
+
+pq = (php+query & php+quick)
 
 **pq is a small DSL for writing database logic in a more readable way.**
 
