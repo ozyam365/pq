@@ -13,7 +13,9 @@ foreach(@res as @row):
 endforeach;
 
 🚀PQ 엔진소개
-✨PQ engine VERSION 0.7 베타 버젼이라 작업 하는데로 올리고 있어서 깨진것도 있으니 잘 보시고 참고만 하시면 좋을껍니다.
+
+✨PQ engine VERSION 0.7 beta 베타 버젼이라 작업 하는데로 올리고 있어서 
+깨진것도 있으니 잘 보시고 참고만 하시면 좋을껍니다. w
 
 "PQ엔진은 PHP+QUERY / PHP+QUICK" 이 두가지 의미를 축약해서 [PQ] 라 하게 되었습니다.
 
