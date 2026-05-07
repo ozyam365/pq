@@ -1,4 +1,4 @@
-# pq (beta) version 0.7
+# pq (beta) version 0.74
 
 pq = (php+jquery & php+quick)
 
