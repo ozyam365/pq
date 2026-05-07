@@ -1,8 +1,8 @@
 # pq (beta) version 0.7
 
-pq = (php+query & php+quick)
+pq = (php+jquery & php+quick)
 
-**pq is a small DSL for writing database logic in a more readable way.**
+**pq is a small DSL **
 
 This project is currently in **beta**.
 The syntax and behavior may change at any time.
@@ -104,9 +104,8 @@ If not, feel free to ignore it.
 
 ## 🧩 Future
 
-There is no strict roadmap.
+I am thinking about the future.
 
-pq will evolve based on actual usage and needs.
 
 ---
 
