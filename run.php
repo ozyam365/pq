@@ -1,40 +1,62 @@
 <?php
-ini_set('display_errors', 1);
+ob_start();
 error_reporting(E_ALL);
+ini_set('display_errors', 1);
+$root = dirname(__FILE__);
 
-// 1. 설정 및 엔진 로드
-require_once __DIR__ . '/set/cfg_app.php';
-require_once __DIR__ . '/set/cfg_db.php';
-require_once __DIR__ . '/set/cfg_env.php';
-include_once __DIR__ . "/engine/runner.php";
-include_once __DIR__ . "/engine/router.php"; // 라우터 클래스 포함
+// 1. 코어 로드 (util.php가 autoRoute를 들고 옵니다)
+require_once $root . "/pq/core/util.php"; 
+require_once $root . "/pq/core/func.php";
+require_once $root . "/pq/core/trace.php";
+require_once $root . "/pq/core/session.php";
+require_once $root . "/pq/core/http.php";
+require_once $root . "/pq/core/db.php";
+require_once $root . "/pq/core/list.php";
 
-// 2. [라우팅 정의] URL 패턴과 실행할 .pq 파일을 연결
-// :idx 같은 값은 자동으로 @idx 변수가 됩니다.
-PQRouter::set('/', 'sample/police.pq');
-PQRouter::set('/user/:idx', 'sample/user_view.pq'); 
-PQRouter::set('/test/:category/:id', 'sample/test.pq');
+// 2. 엔진 로드
+require_once $root . "/pq/engine/ready.php";
+require_once $root . "/pq/engine/runner.php";
+require_once $root . "/pq/engine/router.php";
 
-// 3. 실행할 파일 결정 (PATH_INFO 방식)
-// 예: run.php/user/10 -> @idx = 10 주입됨
-$req_path = $_SERVER['PATH_INFO'] ?? '/';
-$target_file = PQRouter::execute($req_path);
+if (function_exists('http')) http()->safe();
 
-// 기존 GET 방식과 호환성을 유지하려면 아래 한 줄 추가
-if(isset($_GET['f'])) $target_file = "sample/{$_GET['f']}.pq";
+// 3. 라우팅 설정 (여기서 autoRoute 함수 정의는 삭제하고 호출만 합니다)
+PQRouter::set('/index', 'html/intro/index.pq');
+PQRouter::set('/intro', 'html/intro/index.pq');
+PQRouter::set('/license', 'html/intro/license.pq');
+PQRouter::set('/lab', 'html/test/lab.pq');
 
-$file = __DIR__ . "/" . ltrim($target_file, '/');
+// 이제 util.php에 정의된 autoRoute를 사용합니다.
+autoRoute($root . '/html/db', '/db');
+autoRoute($root . '/html/file', '/file');
+autoRoute($root . '/html/http', '/http');
+//autoRoute($root . '/html/core', '/core');
+autoRoute($root . '/html/util', '/util');
+autoRoute($root . '/html/service', '/service');
+autoRoute($root . '/html/sample', '/sample');
 
-if (!file_exists($file)) {
-    echo "🔍 PQ File Not Found: $file";
-    exit;
+// ... 이하 라우터 실행 및 출력 로직 동일 ...
+$relative_path = PQRouter::run();
+$target_pq = false;
+if ($relative_path) {
+    if (file_exists($relative_path)) $target_pq = $relative_path;
+    else {
+        $full_path = $root . '/' . ltrim($relative_path, '/');
+        if (file_exists($full_path)) $target_pq = $full_path;
+    }
 }
 
-// 4. PQ 실행
-run_pq($file);
-
-// 5. Trace 출력
-if (class_exists('Trace')) {
-    Trace::dump();
-}
+include_once $root . "/html/layout/header.php"; 
+echo '<div class="pq-container">';
+    include_once $root . "/html/layout/sidebar.php";
+    echo '<main class="pq-main"><div class="pq-section">';
+        if ($target_pq && is_file($target_pq)) {
+            run_pq($target_pq);
+            if (class_exists('Trace') && Trace::is_active()) Trace::out();
+        } else {
+            echo "<h2>🕵️ 수사 실패</h2>";
+        }
+    echo '</div>'; 
+    include_once $root . "/html/layout/footer.php";
+echo '</main></div>';
 ?>
