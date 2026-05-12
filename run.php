@@ -34,10 +34,11 @@ autoRoute($root . '/html/http', '/http');
 autoRoute($root . '/html/session', '/session');
 autoRoute($root . '/html/form', '/form');
 autoRoute($root . '/html/date', '/date');
+autoRoute($root . '/html/text', '/text');
 autoRoute($root . '/html/util', '/util');
 autoRoute($root . '/html/service', '/service');
 autoRoute($root . '/html/sample', '/sample');
-
+autoRoute($root . '/html/test', '/test');
 // 4. 경로 수사 시작
 $relative_path = PQRouter::run();
 $target_pq = false;
